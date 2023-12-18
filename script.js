@@ -78,11 +78,13 @@ function addTask() {
 }
 
 function createTaskElements() {
+    
     let task_table = document.querySelector('.task-table');
 
     console.log(tasks_arr[index].task);
     // creating the tr element
     let tr = document.createElement('tr');
+    tr.setAttribute('class', 'task-row');
     task_table.appendChild(tr);
 
     // creating the td element
@@ -123,6 +125,17 @@ function filterTheTasks() {
 // function for deleting all the tasks
 function deleteAllTasks() {
     console.log('deleting all the tasks');
+
+    // deleting all the tasks from the array
+    index = -1;
+    tasks_arr.splice(0, tasks_arr.length);
+
+    // deleting all the tasks from the table
+    // let task_table = document.querySelector('.task-table');
+    let task_rows = document.querySelectorAll('.task-row');
+    task_rows.forEach(element => {
+        element.remove();
+    });
 }
 
 // function for editing the task
