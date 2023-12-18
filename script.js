@@ -203,7 +203,24 @@ function updateTask(index_of_edit_task, task_name, task_date) {
 
 // function for marking the task as done
 function doneTask() {
-    
+    console.log('marking the task as done');
+
+    // get the task name
+    let task_name = this.parentNode.parentNode.childNodes[0];
+
+    // lets find the index of the task in the array
+    let index_of_done_task;
+    tasks_arr.forEach(element => {
+        if(element.task == task_name.textContent){
+            console.log(tasks_arr.indexOf(element));
+            element.status = true;
+            index_of_done_task = tasks_arr.indexOf(element);    
+        }
+    });
+
+    // updating the status in the table
+    let task_status = this.parentNode.parentNode.childNodes[2];
+    task_status.textContent = 'Completed';
 }
 
 // function for removing the task
