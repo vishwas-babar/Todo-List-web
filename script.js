@@ -141,25 +141,73 @@ function deleteAllTasks() {
 // function for editing the task
 function editTask() {
     console.log('editing the task');
+
+    // getting the task from the input field
+    let task_name = this.parentNode.parentNode.childNodes[0];
+    let task_date = this.parentNode.parentNode.childNodes[1];
+
+    let task_name_input = document.querySelector('.edit-task-name');
+    let task_date_input = document.querySelector('.edit-task-date');
+
+    task_name_input.value = task_name.textContent;
+    task_date_input.value = task_date.textContent;
+
+    //lets find the index of the task in the array
+    let index_of_edit_task;
+
+    for (let i = 0; i < tasks_arr.length; i++) {
+    
+        
+        if (tasks_arr[i].task == task_name.textContent) {
+            index_of_edit_task = i;
+        }
+    }
+
+    // showing the modal for editing the task
+    let edit_modal = document.querySelector('.edit-modal');
+    let overlay = document.querySelector('.overlay');
+    edit_modal.classList.add('activate-edit-modal');
+    overlay.classList.add('activate-overlay');
+
+    let update_btn = document.querySelector('.update-btn');
+    update_btn.addEventListener('click', function() {
+        updateTask(index_of_edit_task, task_name, task_date);
+    });
+}
+
+// function for updating the task
+function updateTask(index_of_edit_task, task_name, task_date) {
+    console.log('updating the task');
+
+    // getting the task from the input field
+    let task_name_input = document.querySelector('.edit-task-name');
+    let task_date_input = document.querySelector('.edit-task-date');
+
+    if (task_name_input.value.trim == ''){
+        alert('Please enter the task');
+    }else{
+        // updating the task in the array
+        tasks_arr[index_of_edit_task].task = task_name_input.value;
+        tasks_arr[index_of_edit_task].date = task_date_input.value;
+
+        task_name.textContent = tasks_arr[index_of_edit_task].task;
+        task_date.textContent = tasks_arr[index_of_edit_task].date;
+
+        // hiding the modal
+        let edit_modal = document.querySelector('.edit-modal');
+        let overlay = document.querySelector('.overlay');
+        edit_modal.classList.remove('activate-edit-modal');
+        overlay.classList.remove('activate-overlay');
+    }
 }
 
 // function for marking the task as done
 function doneTask() {
-    console.log('marking the task as done');
+    
 }
 
 // function for removing the task
 function removeTask() {
     console.log('removing the task');
-}
-
-// function for storing the data into the local storage
-function storeData() {
-    console.log('storing the data into the local storage');
-}
-
-// function for getting the data from the local storage
-function getData() {
-    console.log('getting the data from the local storage');
 }
 

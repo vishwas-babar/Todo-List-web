@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css">
 </head>
+
 <body>
     <main>
         <h1 class="todo">Todo list</h1>
@@ -40,6 +42,16 @@
         </div>
     </main>
 
+    <div class="edit-modal">
+
+        <input class="edit-task-name" type="text" placeholder="Edit a todo...">
+        <input class="edit-task-date" type="date" value="">
+        <button class="update-btn"><box-icon name='check'></box-icon></button>
+
+    </div>
+
+    <div class="overlay"></div>
+
     <div class="tasks-editor">
         <input class="task-name" type="text" placeholder="Add a todo...">
         <input class="task-date" type="date" value="">
@@ -49,4 +61,5 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
