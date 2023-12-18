@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html{
+    height: 100vh;
+    width: 100%;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tr th:nth-child(1){
+    width: 50%;
+}
+
+
+main{
+    height: 80%;
+    width: 60%;
+    margin: 20px auto;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    border-radius: 20px;
+}
+
+
+main h1{
+    text-align: center;
+    padding: 20px;
+    font-size: 2.5rem;
+    color: #fff;
+    background-color: rgb(182, 103, 182);
+    border-radius: 20px 20px 0 0;
+}
+
+
+
+/* editor design */
+.tasks-editor{
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    height: 50px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasks-editor input{
+    width: fit-content;
+    height: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border:2px solid rgb(182, 103, 182);
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    margin-right: 10px;
+}
+
+.tasks-editor input:focus{
+    border:2px solid rgb(182, 103, 182);
+}
+
+.tasks-editor input:nth-child(1){
+    width: 400px;
+}
+
+.tasks-editor button{
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgb(182, 103, 182);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasks-editor button box-icon{
+    width: 70%;
+    height: 70%;
+    display: flex;
+       
+}
+
