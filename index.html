@@ -6,10 +6,17 @@
     <title>ToDo list</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css">
 </head>
 <body>
     <main>
         <h1 class="todo">Todo list</h1>
+
+        <div class="action-container">
+            <button class="filter">FILTER</button>
+            <button class="delete-all">DELETE ALL</button>
+        </div>
+
         <div class="tasks-container">
             <table>
                 <tr>
@@ -24,9 +31,9 @@
                     <td>34-34-54</td>
                     <td>pending</td>
                     <td>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
+                        <button class="edit-btn"><i class='bx bx-edit-alt' ></i></button>
+                        <button class="done-btn"><i class='bx bx-check'></i></button>
+                        <button class="remove-btn"><i class='bx bx-trash'></i></button>
                     </td>
                 </tr>
             </table>
