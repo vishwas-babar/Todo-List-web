@@ -18,7 +18,7 @@
         </div>
 
         <div class="tasks-container">
-            <table>
+            <table class="task-table">
                 <tr>
                     <th>TASK</th>
                     <th>DUE DATE</th>
@@ -26,7 +26,7 @@
                     <th>ACTION</th>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                     <td>vishwas</td>
                     <td>34-34-54</td>
                     <td>pending</td>
@@ -35,15 +35,15 @@
                         <button class="done-btn"><i class='bx bx-check'></i></button>
                         <button class="remove-btn"><i class='bx bx-trash'></i></button>
                     </td>
-                </tr>
+                </tr> -->
             </table>
         </div>
     </main>
 
     <div class="tasks-editor">
-        <input type="text" placeholder="Add a todo...">
-        <input type="date">
-        <button><box-icon name='plus'></box-icon></button>
+        <input class="task-name" type="text" placeholder="Add a todo...">
+        <input class="task-date" type="date" value="">
+        <button class="add-btn"><box-icon name='plus'></box-icon></button>
     </div>
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
