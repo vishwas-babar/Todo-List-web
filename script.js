@@ -2,22 +2,29 @@
 let filter_btn = document.querySelector('.filter');
 let delete_all_btn = document.querySelector('.delete-all');
 
-// let edit_btn = document.querySelector('.edit-btn');
-// let done_btn = document.querySelector('.done-btn');
-// let remove_btn = document.querySelector('.remove-btn');
-
 let add_btn = document.querySelector('.add-btn');
 
 let index = -1; // this is for storing the index of the task in the array of object
+
+// functionality to enter btn to add the task when on the input field
+let task_name = document.querySelector('.task-name');
+let task_date = document.querySelector('.task-date');
+
+task_name.addEventListener('keydown', function(event){
+    if (event.key === 'Enter') {
+        add_btn.click();
+    }
+});
+task_date.addEventListener('keydown', function(event){
+    if(event.key === 'Enter'){
+        add_btn.click();
+    }
+});
 
 
 // add event listeners to all buttons
 filter_btn.addEventListener('click', filterTheTasks);
 delete_all_btn.addEventListener('click', deleteAllTasks);
-
-// edit_btn.addEventListener('click', editTask);
-// done_btn.addEventListener('click', doneTask);
-// remove_btn.addEventListener('click', removeTask);
 
 add_btn.addEventListener('click', addTask);
 
@@ -41,6 +48,19 @@ function addTaskToArray(task, date, status) {
     tasks_arr.push(task_obj);
 }
 
+// this function is for checking if the task is already in the list
+function taskExists(task) {
+    let flag = false;
+
+    tasks_arr.forEach(element => {
+        if (element.task == task) {
+            flag = true;
+        }
+    });
+
+    return flag;
+}
+
 
 // function for adding the task into the list
 function addTask() {
@@ -52,6 +72,8 @@ function addTask() {
 
     if (task_name.value.trim() == '') {
         alert('Please enter the task');
+    }else if (taskExists(task_name.value) == true) {
+        alert('this task is already in list'); 
     } else {
         //  adding the task into the array of object
         addTaskToArray(task_name.value, task_date.value);
@@ -74,6 +96,11 @@ function addTask() {
         remove_btn.forEach(element => {
             element.addEventListener('click', removeTask);
         });
+
+
+        // epmty the input field
+        task_name.value = '';
+        task_date.value = '';
     }
 }
 
