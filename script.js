@@ -226,5 +226,28 @@ function doneTask() {
 // function for removing the task
 function removeTask() {
     console.log('removing the task');
+
+    // get the task name
+    let task_name = this.parentNode.parentNode.childNodes[0];
+
+    // lets find the index of the task in the array
+    let index_of_remove_task;
+    for (let i = 0; i < tasks_arr.length; i++) {
+        
+        if (task_name.textContent == tasks_arr[i].task) {
+            index_of_remove_task = i;
+            break;
+        }    
+    }
+
+    // removing the task from the array
+    tasks_arr.splice(index_of_remove_task, 1);
+
+    // removing the task from the table
+    let task_row = this.parentNode.parentNode;
+    task_row.remove();
+
+    // updating the index
+    index--;
 }
 
