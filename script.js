@@ -41,6 +41,18 @@ class Tasks {
 }
 
 
+// set the default date for date picker
+setDefaultDate();
+function setDefaultDate() {
+    let input_date = document.querySelector('.task-date');
+
+    const date = new Date();
+    let current_date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+    console.log(current_date);
+    input_date.value = current_date;
+}
+
+
 // this function is for creating a object and storing it into the array
 function addTaskToArray(task, date, status) {
     let task_obj = new Tasks(task, date, status);
@@ -100,7 +112,6 @@ function addTask() {
 
         // epmty the input field
         task_name.value = '';
-        task_date.value = '';
     }
 }
 
@@ -144,11 +155,6 @@ function createTaskElements() {
 }
 
 
-// // function for filtering the tasks
-// function filterTheTasks() {
-//     console.log('filtering the tasks');
-// }
-
 // function for deleting all the tasks
 function deleteAllTasks() {
     console.log('deleting all the tasks');
@@ -158,7 +164,6 @@ function deleteAllTasks() {
     tasks_arr.splice(0, tasks_arr.length);
 
     // deleting all the tasks from the table
-    // let task_table = document.querySelector('.task-table');
     let task_rows = document.querySelectorAll('.task-row');
     task_rows.forEach(element => {
         element.remove();
@@ -234,6 +239,8 @@ function doneTask() {
 
     // get the task name
     let task_name = this.parentNode.parentNode.childNodes[0];
+    let task_row = this.parentNode.parentNode;
+    task_row.classList.add('task-row-completed');
 
     // lets find the index of the task in the array
     let index_of_done_task;
@@ -307,11 +314,6 @@ dropdown_container.addEventListener('mouseleave', function(){
     dropdown_container.classList.remove('show-dropdown');
 });
 
-// function showDropDown(event) {
-//     let dropdown_container = document.querySelector('.dropdown-container');
-//     dropdown_container.classList.toggle('show-dropdown');
-// }
-
 // function for filtering the task to completed
 function filterTheTasksAsCompleted(rows) {
     console.log('filtering the task to completed');
@@ -348,7 +350,5 @@ function filterTheTasksAsAll(rows) {
         element.style.display = 'table-row';
     });
 
-    // // close the dropdown
-    // showDropDown();
 }
 
