@@ -10,13 +10,13 @@ let index = -1; // this is for storing the index of the task in the array of obj
 let task_name = document.querySelector('.task-name');
 let task_date = document.querySelector('.task-date');
 
-task_name.addEventListener('keydown', function(event){
+task_name.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         add_btn.click();
     }
 });
-task_date.addEventListener('keydown', function(event){
-    if(event.key === 'Enter'){
+task_date.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
         add_btn.click();
     }
 });
@@ -72,8 +72,8 @@ function addTask() {
 
     if (task_name.value.trim() == '') {
         alert('Please enter the task');
-    }else if (taskExists(task_name.value) == true) {
-        alert('this task is already in list'); 
+    } else if (taskExists(task_name.value) == true) {
+        alert('this task is already in list');
     } else {
         //  adding the task into the array of object
         addTaskToArray(task_name.value, task_date.value);
@@ -105,7 +105,7 @@ function addTask() {
 }
 
 function createTaskElements() {
-    
+
     let task_table = document.querySelector('.task-table');
 
     console.log(tasks_arr[index].task);
@@ -122,9 +122,9 @@ function createTaskElements() {
 
     td1.textContent = tasks_arr[index].task;
     td2.textContent = tasks_arr[index].date;
-    td3.textContent = (()=> {
+    td3.textContent = (() => {
         if (tasks_arr[index].status == true) {
-            return 'Completed';
+            return 'completed';
         } else {
             return 'pending';
         }
@@ -144,10 +144,10 @@ function createTaskElements() {
 }
 
 
-// function for filtering the tasks
-function filterTheTasks() {
-    console.log('filtering the tasks');
-}
+// // function for filtering the tasks
+// function filterTheTasks() {
+//     console.log('filtering the tasks');
+// }
 
 // function for deleting all the tasks
 function deleteAllTasks() {
@@ -183,8 +183,8 @@ function editTask() {
     let index_of_edit_task;
 
     for (let i = 0; i < tasks_arr.length; i++) {
-    
-        
+
+
         if (tasks_arr[i].task == task_name.textContent) {
             index_of_edit_task = i;
         }
@@ -197,7 +197,7 @@ function editTask() {
     overlay.classList.add('activate-overlay');
 
     let update_btn = document.querySelector('.update-btn');
-    update_btn.addEventListener('click', function() {
+    update_btn.addEventListener('click', function () {
         updateTask(index_of_edit_task, task_name, task_date);
     });
 }
@@ -210,9 +210,9 @@ function updateTask(index_of_edit_task, task_name, task_date) {
     let task_name_input = document.querySelector('.edit-task-name');
     let task_date_input = document.querySelector('.edit-task-date');
 
-    if (task_name_input.value.trim == ''){
+    if (task_name_input.value.trim == '') {
         alert('Please enter the task');
-    }else{
+    } else {
         // updating the task in the array
         tasks_arr[index_of_edit_task].task = task_name_input.value;
         tasks_arr[index_of_edit_task].date = task_date_input.value;
@@ -238,16 +238,16 @@ function doneTask() {
     // lets find the index of the task in the array
     let index_of_done_task;
     tasks_arr.forEach(element => {
-        if(element.task == task_name.textContent){
+        if (element.task == task_name.textContent) {
             console.log(tasks_arr.indexOf(element));
             element.status = true;
-            index_of_done_task = tasks_arr.indexOf(element);    
+            index_of_done_task = tasks_arr.indexOf(element);
         }
     });
 
     // updating the status in the table
     let task_status = this.parentNode.parentNode.childNodes[2];
-    task_status.textContent = 'Completed';
+    task_status.textContent = 'completed';
 }
 
 // function for removing the task
@@ -260,11 +260,11 @@ function removeTask() {
     // lets find the index of the task in the array
     let index_of_remove_task;
     for (let i = 0; i < tasks_arr.length; i++) {
-        
+
         if (task_name.textContent == tasks_arr[i].task) {
             index_of_remove_task = i;
             break;
-        }    
+        }
     }
 
     // removing the task from the array
@@ -276,5 +276,79 @@ function removeTask() {
 
     // updating the index
     index--;
+}
+
+// function for filtering the task
+function filterTheTasks() {
+    console.log('filtering the task');
+
+    let tr = document.querySelectorAll('.task-row');
+    // this is for filtering the task to completed
+
+    let all_filter = document.querySelector('.all-filter');
+    let pending_filter = document.querySelector('.pending-filter');
+    let completed_filter = document.querySelector('.completed-filter');
+
+    all_filter.addEventListener('click', function(){filterTheTasksAsAll(tr)});
+    pending_filter.addEventListener('click', function(){filterTheTasksAsPending(tr)});
+    completed_filter.addEventListener('click', function(){filterTheTasksAsCompleted(tr)});
+}
+
+// function for showing the dropdown
+filter_btn.addEventListener('mouseenter', function(){
+    let dropdown_container = document.querySelector('.dropdown-container');
+    dropdown_container.classList.add('show-dropdown');
+})
+
+// function for hiding the dropdown when mouse leaves from dropdown container
+let dropdown_container = document.querySelector('.dropdown-container');
+dropdown_container.addEventListener('mouseleave', function(){
+    let dropdown_container = document.querySelector('.dropdown-container');
+    dropdown_container.classList.remove('show-dropdown');
+});
+
+// function showDropDown(event) {
+//     let dropdown_container = document.querySelector('.dropdown-container');
+//     dropdown_container.classList.toggle('show-dropdown');
+// }
+
+// function for filtering the task to completed
+function filterTheTasksAsCompleted(rows) {
+    console.log('filtering the task to completed');
+    filterTheTasksAsAll(rows);
+
+    rows.forEach(element => {
+        if (element.childNodes[2].textContent == 'pending') {
+            element.style.display = 'none';
+        }
+    });
+
+}
+
+// function for filtering the task to pending
+function filterTheTasksAsPending(rows) {
+    console.log('filtering the task to pending');
+    filterTheTasksAsAll(rows);
+
+    rows.forEach(element => {
+        if (element.childNodes[2].textContent == 'completed') {
+            element.style.display = 'none';
+        }
+    });
+
+    
+}
+
+// function for filtering the task to all
+function filterTheTasksAsAll(rows) {
+
+    console.log('filtering the task to all');
+
+    rows.forEach(element => {
+        element.style.display = 'table-row';
+    });
+
+    // // close the dropdown
+    // showDropDown();
 }
 

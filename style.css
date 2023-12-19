@@ -1,24 +1,27 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-body, html{
+body,
+html {
     height: 100vh;
     width: 100%;
 }
 
-.action-container{
+.action-container {
     width: 90%;
     margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
-.action-container .filter, .action-container .delete-all {
+.action-container .filter,
+.action-container .delete-all {
     padding: 15px 20px;
     border: none;
     outline: none;
@@ -37,6 +40,38 @@ body, html{
     transform: translateY(-7px);
 }
 
+
+.filter:hover .dropdown-container {
+    display: block;
+}
+
+.dropdown-container {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%; /* add this line */
+}
+
+.dropdown-container a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-container a:hover {
+    background-color: #ddd;
+}
+
+.show-dropdown {
+    display: block;
+}
+
 .action-container .delete-all {
     background-color: rgb(182, 103, 182);
 }
@@ -47,73 +82,73 @@ body, html{
     transform: translateY(-7px);
 }
 
-table{
+table {
     width: 90%;
     margin: 20px auto;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
     border-radius: 10px;
     border-spacing: 0;
 }
 
-table tr{
+table tr {
     border-bottom: 1px solid #ddd;
     height: 50px;
     padding: 10px;
 }
 
-table tr th{
+table tr th {
     text-align: left;
     padding: 10px;
-    background: rgb(200, 199, 225); 
+    background: rgb(200, 199, 225);
     font-weight: 500;
     font-size: 0.9rem;
 }
 
-table tr th:first-child{
+table tr th:first-child {
     border-top-left-radius: 10px;
 }
 
-table tr th:last-child{
+table tr th:last-child {
     border-top-right-radius: 10px
 }
 
-table tr td{
+table tr td {
     text-align: left;
     padding: 10px;
     font-size: 1rem;
     color: #2a2727;
-    
+
     overflow: hidden;
 }
 
-table tr td{
+table tr td {
     text-align: left;
 }
 
-table tr th:nth-child(1){
+table tr th:nth-child(1) {
     width: 50%;
 }
 
-table tr th:nth-child(2){
+table tr th:nth-child(2) {
     width: 20%;
 }
 
-table tr th:nth-child(3){
+table tr th:nth-child(3) {
     width: 15%;
 }
 
-table tr th:nth-child(4){
+table tr th:nth-child(4) {
     width: 20%;
 }
 
-table tr td:last-child{
+table tr td:last-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
     column-gap: 5px;
 }
 
-table .edit-btn{
+table .edit-btn {
     background-color: rgb(211, 226, 82);
     color: #fff;
     border: none;
@@ -125,12 +160,12 @@ table .edit-btn{
     cursor: pointer;
 }
 
-table .edit-btn i{
+table .edit-btn i {
     font-size: 1.2rem;
     color: black;
 }
 
-table .done-btn{
+table .done-btn {
     background-color: rgb(88, 206, 137);
     color: #fff;
     border: none;
@@ -142,12 +177,12 @@ table .done-btn{
     cursor: pointer;
 }
 
-table .done-btn i{
+table .done-btn i {
     font-size: 1.8rem;
     color: black;
 }
 
-table .remove-btn{
+table .remove-btn {
     background-color: rgb(250, 133, 133);
     color: #fff;
     border: none;
@@ -159,7 +194,9 @@ table .remove-btn{
     cursor: pointer;
 }
 
-table .edit-btn, table .done-btn, table .remove-btn {
+table .edit-btn,
+table .done-btn,
+table .remove-btn {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
 }
@@ -182,22 +219,22 @@ table .remove-btn:hover {
     transform: translateY(-7px);
 }
 
-table .remove-btn i{
+table .remove-btn i {
     font-size: 1.2rem;
     color: black;
 }
 
 
-main{
+main {
     height: 80%;
     width: 60%;
     margin: 20px auto;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
     border-radius: 20px;
 }
 
 
-main h1{
+main h1 {
     text-align: center;
     padding: 20px;
     font-size: 2.5rem;
@@ -209,40 +246,40 @@ main h1{
 
 
 /* editor design */
-.tasks-editor{
+.tasks-editor {
     position: fixed;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     width: fit-content;
     height: 50px;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.tasks-editor input{
+.tasks-editor input {
     width: fit-content;
     height: 100%;
     padding: 10px;
     font-size: 1rem;
-    border:2px solid rgb(182, 103, 182);
+    border: 2px solid rgb(182, 103, 182);
     outline: none;
     border-radius: 10px;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
     margin-right: 10px;
 }
 
-.tasks-editor input:focus{
-    border:2px solid rgb(182, 103, 182);
+.tasks-editor input:focus {
+    border: 2px solid rgb(182, 103, 182);
 }
 
-.tasks-editor input:nth-child(1){
+.tasks-editor input:nth-child(1) {
     width: 400px;
 }
 
-.tasks-editor button{
+.tasks-editor button {
     width: 50px;
     height: 50px;
     border: none;
@@ -257,29 +294,29 @@ main h1{
     justify-content: center;
 }
 
-.tasks-editor button box-icon{
+.tasks-editor button box-icon {
     width: 70%;
     height: 70%;
     display: flex;
-       
+
 }
 
 
-.overlay{
-    position:absolute;
+.overlay {
+    position: absolute;
     top: 0;
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
-    display:none;
+    display: none;
 }
 
-.activate-overlay{
+.activate-overlay {
     display: block;
 }
 
-.edit-modal{
+.edit-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -294,35 +331,35 @@ main h1{
 }
 
 
-.activate-edit-modal{
+.activate-edit-modal {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.edit-modal input{
+.edit-modal input {
     height: 40px;
     padding: 10px;
     font-size: 1rem;
-    border:2px solid rgb(182, 103, 182);
+    border: 2px solid rgb(182, 103, 182);
     outline: none;
     border-radius: 10px;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
 }
 
-.edit-modal input:focus{
-    border:2px solid rgb(182, 103, 182);
+.edit-modal input:focus {
+    border: 2px solid rgb(182, 103, 182);
 }
 
-.edit-modal .edit-task-name{
+.edit-modal .edit-task-name {
     width: 60%;
 }
 
-.edit-modal .edit-task-date{
+.edit-modal .edit-task-date {
     width: 25%;
 }
 
-.edit-modal button{
+.edit-modal button {
     width: 40px;
     height: 40px;
     border: none;
@@ -338,17 +375,15 @@ main h1{
     transition: all 0.3s ease 0s;
 }
 
-.edit-modal button box-icon{
+.edit-modal button box-icon {
     width: 70%;
     height: 70%;
     display: flex;
-       
+
 }
 
-.edit-modal button:hover{
+.edit-modal button:hover {
     background-color: rgb(202, 123, 202);
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     transform: translateY(-7px);
 }
-
-
